@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: stateway-agents
+    url: https://github.com/stateway-io/stateway-agents
+    about: Repository where the AI agent that processes these issues is built.
