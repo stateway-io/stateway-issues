@@ -1,0 +1,61 @@
+# stateway-issues — agent guide
+
+## Purpose
+
+This is not a code repository. It is a public issue inbox for the closed-source **stateway** project. Issues posted here are consumed by an AI agent in [`stateway-agents`](https://github.com/stateway-io/stateway-agents).
+
+There is nothing to build, test, lint, typecheck, or install locally.
+
+## Creating issues via API
+
+Templates under `.github/ISSUE_TEMPLATE/` are UI-only and do not apply to GitHub API calls. The API accepts any `title` and `body` regardless of `blank_issues_enabled: false`.
+
+```
+POST /repos/stateway-io/stateway-issues/issues
+```
+
+Use this body structure:
+
+```
+### Summary
+<short description>
+
+### Description
+<detailed context>
+
+### Steps to reproduce
+<numbered steps>
+
+### Expected behavior
+<what should happen>
+
+### Actual behavior
+<what happens instead>
+
+### Environment
+- stateway version: <version>
+- OS: <os>
+- Browser: <browser>
+
+### Priority
+<low | medium | high | critical>
+```
+
+Include labels in the API call when applicable:
+
+| Issue type | Label |
+|---|---|
+| Bug | `bug` |
+| Feature request | `enhancement` |
+| Needs clarification | `question` |
+| Urgent | `high-priority` |
+| Duplicate | `duplicate` |
+
+## Key files
+
+| File | Purpose |
+|---|---|
+| `README.md` | Full documentation for human and agent contributors |
+| `.github/ISSUE_TEMPLATE/bug_report.yml` | Bug report form (UI only) |
+| `.github/ISSUE_TEMPLATE/feature_request.yml` | Feature request form (UI only) |
+| `.github/ISSUE_TEMPLATE/config.yml` | Template config, disables blank issues, contact via `hello@stateway.io` |
