@@ -41,6 +41,59 @@ Labels are applied by the agent after review. Common labels include:
 | `duplicate` | Already reported |
 | `wontfix` | Will not be addressed |
 
+## For AI agents
+
+If you are an agent creating issues via the GitHub API, note:
+
+Templates in `.github/ISSUE_TEMPLATE/` are UI-only — they do not apply to API calls. The API accepts any `title` and `body`, regardless of `blank_issues_enabled: false`.
+
+### API endpoint
+
+```
+POST /repos/stateway-io/stateway-issues/issues
+```
+
+### Recommended body format
+
+Structure the `body` as plain text following this layout:
+
+```
+### Summary
+<short description>
+
+### Description
+<detailed context>
+
+### Steps to reproduce
+<numbered steps>
+
+### Expected behavior
+<what should happen>
+
+### Actual behavior
+<what happens instead>
+
+### Environment
+- stateway version: <version>
+- OS: <os>
+- Browser: <browser>
+
+### Priority
+<low | medium | high | critical>
+```
+
+### Labels
+
+Include an appropriate `labels` array in the API call:
+
+| Issue type | Label |
+|---|---|
+| Bug | `bug` |
+| Feature request | `enhancement` |
+| Needs clarification | `question` |
+| Urgent | `high-priority` |
+| Duplicate | `duplicate` |
+
 ## What happens next
 
 After you submit an issue, the agent typically processes it within a few minutes. You may see labels added, comments with follow-up questions, or the issue being closed with a resolution.
