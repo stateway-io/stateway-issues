@@ -1,0 +1,57 @@
+name: Question / Clarification
+
+description: Ask a question or request clarification about stateway
+
+title: "[Question] "
+
+labels: ["question"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out. This template is for questions and clarifications; the team will respond.
+
+  - type: input
+    id: title
+    attributes:
+      label: Summary
+      description: A short summary of your question
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Add any background that helps us understand the question — what you're trying to do, where you're stuck, etc.
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: If relevant, provide details about your environment.
+      placeholder: |
+        - stateway version: [e.g. 1.2.3]
+        - OS: [e.g. macOS 14, Windows 11, Ubuntu 22.04]
+        - Browser: [e.g. Chrome 120, Safari 17]
+    validations:
+      required: false
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots / references
+      description: Attach screenshots, logs, or links to relevant documentation or code.
+    validations:
+      required: false

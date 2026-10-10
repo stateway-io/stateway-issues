@@ -41,15 +41,27 @@ Use this body structure:
 <low | medium | high | critical>
 ```
 
+For urgent bugs, also add the `severity:high` or `severity:critical` label so the agent routes the issue to triage instead of attempting an automatic fix.
+
 Include labels in the API call when applicable:
 
 | Issue type | Label |
 |---|---|
 | Bug | `bug` |
-| Feature request | `enhancement` |
+| Feature request | `feature-request` |
+| Documentation | `docs` |
+| Chore | `chore` |
 | Needs clarification | `question` |
-| Urgent | `high-priority` |
-| Duplicate | `duplicate` |
+| Urgent bug | `severity:high` or `severity:critical` |
+
+Maintainer override labels (not set by issue templates):
+
+| Override | Label |
+|---|---|
+| Force agent fix | `agent-fix-please` |
+| Force agent skip | `agent-skip` |
+
+> **Source of truth:** the label schema lives in [`../fly-swe/docs/label-schema.md`](../fly-swe/docs/label-schema.md). This table must stay in sync with it.
 
 ## Key files
 
@@ -58,4 +70,7 @@ Include labels in the API call when applicable:
 | `README.md` | Full documentation for human and agent contributors |
 | `.github/ISSUE_TEMPLATE/bug_report.yml` | Bug report form (UI only) |
 | `.github/ISSUE_TEMPLATE/feature_request.yml` | Feature request form (UI only) |
+| `.github/ISSUE_TEMPLATE/docs_change.yml` | Documentation change form (UI only) |
+| `.github/ISSUE_TEMPLATE/question.yml` | Question / clarification form (UI only) |
+| `.github/ISSUE_TEMPLATE/chore.yml` | Chore / maintenance form (UI only) |
 | `.github/ISSUE_TEMPLATE/config.yml` | Template config, disables blank issues, contact via `hello@stateway.io` |

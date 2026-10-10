@@ -1,0 +1,67 @@
+name: Documentation Change
+
+description: Report a documentation issue or suggest an improvement
+
+title: "[Docs] "
+
+labels: ["docs"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the documentation. Clear details help us fix it faster.
+
+  - type: input
+    id: title
+    attributes:
+      label: Summary
+      description: A short, clear description of the documentation issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Affected page / section
+      description: Where did you find the issue? Paste a URL, file path, or section heading.
+      placeholder: |
+        e.g. docs/docs/02-guides/supported-elements.mdx, section "sendTask"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is wrong, unclear, or missing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: If you have a proposed wording or fix, paste it here.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this documentation fix?
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots / references
+      description: Attach screenshots or paste links to related issues, PRs, or source code.
+    validations:
+      required: false

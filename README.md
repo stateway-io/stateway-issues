@@ -18,6 +18,9 @@ The agent is designed to understand structured bug reports and feature requests,
 |---|---|---|
 | Bug report | [`bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml) | Something is not working as expected |
 | Feature request | [`feature_request.yml`](.github/ISSUE_TEMPLATE/feature_request.yml) | A suggestion or idea for improvement |
+| Documentation | [`docs_change.yml`](.github/ISSUE_TEMPLATE/docs_change.yml) | Improvements or additions to documentation |
+| Question | [`question.yml`](.github/ISSUE_TEMPLATE/question.yml) | Needs clarification |
+| Chore | [`chore.yml`](.github/ISSUE_TEMPLATE/chore.yml) | Light refactor, lint, dependency bump, or maintenance |
 
 If you're unsure which to use, just open a regular issue with a clear description.
 
@@ -30,14 +33,26 @@ If you're unsure which to use, just open a regular issue with a clear descriptio
 
 ## Labels
 
-Labels are applied by the agent after review. Common labels include:
+Labels are applied by the agent after review. Actionable labels include:
 
 | Label | Meaning |
 |---|---|
-| `bug` | Confirmed bug |
-| `enhancement` | Feature request |
-| `question` | Needs clarification |
-| `high-priority` | Requires urgent attention |
+| `bug` | Confirmed bug — agent attempts a fix and opens a PR |
+| `feature-request` | Feature request — agent records it for triage |
+| `docs` | Documentation / README / API reference edits |
+| `chore` | Light refactor, lint, dependency bump, or maintenance |
+| `question` | Needs clarification — agent only comments and defers to a human |
+| `severity:high` | Urgent bug — promoted to triage, no automatic fix |
+| `severity:critical` | Critical bug — promoted to triage, no automatic fix |
+| `agent-fix-please` | Maintainer override: force the agent to attempt a fix |
+| `agent-skip` | Maintainer override: force the agent to ignore the issue |
+
+### Manual maintainer labels
+
+These labels are not part of the agent routing schema and are applied manually by maintainers:
+
+| Label | Meaning |
+|---|---|
 | `duplicate` | Already reported |
 | `wontfix` | Will not be addressed |
 
@@ -82,6 +97,8 @@ Structure the `body` as plain text following this layout:
 <low | medium | high | critical>
 ```
 
+For urgent bugs, also include the `severity:high` or `severity:critical` label so the agent routes the issue to triage instead of attempting an automatic fix.
+
 ### Labels
 
 Include an appropriate `labels` array in the API call:
@@ -89,10 +106,18 @@ Include an appropriate `labels` array in the API call:
 | Issue type | Label |
 |---|---|
 | Bug | `bug` |
-| Feature request | `enhancement` |
+| Feature request | `feature-request` |
+| Documentation | `docs` |
+| Chore | `chore` |
 | Needs clarification | `question` |
-| Urgent | `high-priority` |
-| Duplicate | `duplicate` |
+| Urgent bug | `severity:high` or `severity:critical` |
+
+Maintainer override labels (not set by issue templates):
+
+| Override | Label |
+|---|---|
+| Force agent fix | `agent-fix-please` |
+| Force agent skip | `agent-skip` |
 
 ## What happens next
 
